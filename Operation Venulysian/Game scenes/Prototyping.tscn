@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=4 uid="uid://d0jw7un8xrfh"]
+
+[ext_resource type="Texture2D" uid="uid://c1t3pshnpfysr" path="res://icon.svg" id="1_vfyey"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfyey"]
+radius = 48.0104
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vfyey"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfyey"]
+texture = ExtResource("1_vfyey")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_w2dvv"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_vfyey")
+
+[node name="Prototyping" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(106, 455)
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+offset_left = -46.0
+offset_top = -48.0
+offset_right = 49.0
+offset_bottom = 47.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_vfyey")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(303, 58)
+physics_material_override = SubResource("PhysicsMaterial_vfyey")
+
+[node name="ColorRect" type="ColorRect" parent="RigidBody2D"]
+offset_left = -46.0
+offset_top = -48.0
+offset_right = 49.0
+offset_bottom = 47.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_vfyey")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_w2dvv")
