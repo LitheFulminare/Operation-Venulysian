@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1vtmnwr2sk4q"]
+
+[ext_resource type="Script" uid="uid://creutxpg4tk0i" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://b4yrdgvplq3aq" path="res://Components/Entity/movement_component.gd" id="1_l8h54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfyey"]
+size = Vector2(100, 100)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component")]
+script = ExtResource("1_4ntmi")
+movement_component = NodePath("Movement Component")
+
+[node name="Movement Component" type="Node" parent="." node_paths=PackedStringArray("character_body")]
+script = ExtResource("1_l8h54")
+character_body = NodePath("..")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vfyey")
