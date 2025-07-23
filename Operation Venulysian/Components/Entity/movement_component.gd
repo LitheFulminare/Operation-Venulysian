@@ -16,6 +16,9 @@ func move() -> void:
 	if Input.is_action_pressed("Right"):
 		direction.x = 1
 	
+	if Input.is_action_pressed("Up"):
+		jump()
+	
 	character_body.velocity = direction * speed
 	
 	#region movement alternative
@@ -31,7 +34,19 @@ func move() -> void:
 	
 	#endregion
 	
-	if !is_jumping:
+	if is_jumping:
+		character_body.velocity.y -= 10000
+	
+	if !character_body.is_on_floor():
 		character_body.velocity.y += 500
+	else: 
+		is_jumping = false
 	
 	character_body.move_and_slide()
+
+func jump() -> void:
+	if character_body.is_on_floor():
+		is_jumping = true
+		#character_body.velocity.y -= 5000 # jump force
+		#
+		#character_body.move_and_slide()
