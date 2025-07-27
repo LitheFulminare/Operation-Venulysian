@@ -9,6 +9,8 @@ extends Node
 @export var jump_velocity: float = 400
 @export_range(0, 1) var jump_release_deceleration = 0.5
 
+var is_dashing: bool = false
+
 func _physics_process(delta: float) -> void:
 	if !character_body.is_on_floor():
 		character_body.velocity += character_body.get_gravity() * delta
@@ -18,7 +20,10 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_released("Up"):
 		character_body.velocity.y *= jump_release_deceleration
-
+		
+	if PlayerVars.dash_unlocked && Input.is_action_just_pressed("Dash"):
+		print("player dashed")
+		
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
 		character_body.velocity.x = direction * walk_speed
