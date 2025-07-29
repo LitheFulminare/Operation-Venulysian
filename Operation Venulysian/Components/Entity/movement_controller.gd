@@ -6,10 +6,14 @@ extends Node
 
 @export_group("Parameters")
 @export var walk_speed: float = 300
+@export var dash_speed_multiplier: float = 5
 @export var jump_velocity: float = 400
 @export_range(0, 1) var jump_release_deceleration = 0.5
 
 var is_dashing: bool = false
+
+@onready var base_walking_speed: float = walk_speed
+@onready var dash_speed: float = walk_speed * dash_speed_multiplier
 
 func move(delta: float) -> void:
 	if !character_body.is_on_floor():
@@ -22,7 +26,7 @@ func move(delta: float) -> void:
 		character_body.velocity.y *= jump_release_deceleration
 		
 	if PlayerVars.dash_unlocked && Input.is_action_just_pressed("Dash"):
-		print("player dashed")
+		walk_speed = dash_speed
 		
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
