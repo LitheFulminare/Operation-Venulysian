@@ -10,15 +10,16 @@ size = Vector2(100, 100)
 script = ExtResource("1_4ntmi")
 movement_component = NodePath("Movement Controller")
 
-[node name="Movement Controller" type="Node" parent="." node_paths=PackedStringArray("character_body")]
+[node name="Movement Controller" type="Node" parent="." node_paths=PackedStringArray("character_body", "dash_duration_timer")]
 script = ExtResource("1_l8h54")
 character_body = NodePath("..")
+dash_duration_timer = NodePath("../Dash Duration")
 walk_speed = 350.0
 jump_velocity = 450.0
 jump_release_deceleration = 0.35
 
 [node name="Dash Duration" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.2
 
 [node name="Dash Cooldown" type="Timer" parent="."]
 wait_time = 0.1
@@ -38,3 +39,5 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vfyey")
+
+[connection signal="timeout" from="Dash Duration" to="Movement Controller" method="_on_dash_duration_timeout"]
