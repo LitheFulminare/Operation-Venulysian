@@ -4,6 +4,7 @@ extends Node
 @export_group("Components")
 @export var character_body: CharacterBody2D
 @export var dash_duration_timer: Timer
+@export var dash_cooldown_timer: Timer
 
 @export_group("Parameters")
 @export var walk_speed: float = 300
@@ -12,6 +13,7 @@ extends Node
 @export_range(0, 1) var jump_release_deceleration = 0.5
 
 var is_dashing: bool = false
+var is_dash_on_cooldown: bool = false
 var is_looking_right: bool = true
 
 @onready var base_walk_speed: float = walk_speed
@@ -27,9 +29,10 @@ func move(delta: float) -> void:
 	if Input.is_action_just_released("Up"):
 		character_body.velocity.y *= jump_release_deceleration
 		
-	if PlayerVars.dash_unlocked && Input.is_action_just_pressed("Dash"):
-		walk_speed = dash_speed
+	if PlayerVars.dash_unlocked && Input.is_action_just_pressed("Dash") && !is_dash_on_cooldown:
 		is_dashing = true
+		is_dash_on_cooldown = true
+		walk_speed = dash_speed
 		dash_duration_timer.start()
 		
 	var direction: float
@@ -54,3 +57,8 @@ func move(delta: float) -> void:
 func _on_dash_duration_timeout() -> void:
 	is_dashing = false
 	walk_speed = base_walk_speed
+	dash_cooldown_timer.start()
+
+
+func _on_dash_cooldown_timeout() -> void:
+	is_dash_on_cooldown = false
