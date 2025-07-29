@@ -32,7 +32,16 @@ func move(delta: float) -> void:
 		is_dashing = true
 		dash_duration_timer.start()
 		
-	var direction := Input.get_axis("Left", "Right")
+	var direction: float
+	
+	if is_dashing:
+		if is_looking_right:
+			direction = 1
+		else:
+			direction = -1
+	else:
+		direction = Input.get_axis("Left", "Right")
+	
 	if direction:
 		character_body.velocity.x = direction * walk_speed
 		is_looking_right = direction > 0
