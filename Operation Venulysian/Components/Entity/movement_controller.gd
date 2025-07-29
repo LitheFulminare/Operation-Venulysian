@@ -11,7 +11,7 @@ extends Node
 
 var is_dashing: bool = false
 
-func _physics_process(delta: float) -> void:
+func move(delta: float) -> void:
 	if !character_body.is_on_floor():
 		character_body.velocity += character_body.get_gravity() * delta
 

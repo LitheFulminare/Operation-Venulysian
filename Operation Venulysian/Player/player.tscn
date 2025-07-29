@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1vtmnwr2sk4q"]
+[gd_scene load_steps=4 format=3 uid="uid://b1vtmnwr2sk4q"]
 
+[ext_resource type="Script" uid="uid://creutxpg4tk0i" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://b4yrdgvplq3aq" path="res://Components/Entity/movement_controller.gd" id="1_l8h54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfyey"]
 size = Vector2(100, 100)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component")]
+script = ExtResource("1_4ntmi")
+movement_component = NodePath("Movement Controller")
 
 [node name="Movement Controller" type="Node" parent="." node_paths=PackedStringArray("character_body")]
 script = ExtResource("1_l8h54")
@@ -13,6 +16,12 @@ character_body = NodePath("..")
 walk_speed = 350.0
 jump_velocity = 450.0
 jump_release_deceleration = 0.35
+
+[node name="Dash Duration" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Dash Cooldown" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
