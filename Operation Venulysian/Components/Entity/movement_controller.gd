@@ -23,8 +23,11 @@ func move(delta: float) -> void:
 	if !character_body.is_on_floor() && !is_dashing:
 		character_body.velocity += character_body.get_gravity() * delta
 
-	if Input.is_action_just_pressed("Up") && character_body.is_on_floor():
-		character_body.velocity.y = -jump_velocity
+	if Input.is_action_just_pressed("Up"):
+		if character_body.is_on_floor():
+			character_body.velocity.y = -jump_velocity
+		elif PlayerVars.double_jump_unlocked:
+			character_body.velocity.y = -jump_velocity
 
 	if Input.is_action_just_released("Up"):
 		character_body.velocity.y *= jump_release_deceleration
