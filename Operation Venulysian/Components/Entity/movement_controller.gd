@@ -16,6 +16,8 @@ var is_dashing: bool = false
 var is_dash_on_cooldown: bool = false
 var is_looking_right: bool = true
 
+var double_jump_active:bool = false
+
 @onready var base_walk_speed: float = walk_speed
 @onready var dash_speed: float = walk_speed * dash_speed_multiplier
 
@@ -26,8 +28,10 @@ func move(delta: float) -> void:
 	if Input.is_action_just_pressed("Up"):
 		if character_body.is_on_floor():
 			character_body.velocity.y = -jump_velocity
-		elif PlayerVars.double_jump_unlocked:
+			double_jump_active = true
+		elif PlayerVars.double_jump_unlocked && double_jump_active:
 			character_body.velocity.y = -jump_velocity
+			double_jump_active = false
 
 	if Input.is_action_just_released("Up"):
 		character_body.velocity.y *= jump_release_deceleration
