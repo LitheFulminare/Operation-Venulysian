@@ -7,10 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfyey"]
 size = Vector2(100, 100)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "grappling_hook_component")]
 collision_layer = 2
 script = ExtResource("1_4ntmi")
 movement_component = NodePath("Movement Controller")
+grappling_hook_component = NodePath("Grappling Hook Controller")
 
 [node name="Movement Controller" type="Node" parent="." node_paths=PackedStringArray("character_body", "dash_duration_timer", "dash_cooldown_timer")]
 script = ExtResource("1_l8h54")

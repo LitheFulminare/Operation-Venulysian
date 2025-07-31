@@ -5,9 +5,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swwwa"]
 size = Vector2(500, 500)
 
-[node name="Grappling point" type="Node2D" node_paths=PackedStringArray("interaction_area")]
+[node name="Grappling Point" type="Node2D" node_paths=PackedStringArray("interaction_area", "destination_point")]
 script = ExtResource("1_4dms6")
 interaction_area = NodePath("Interaction Area")
+destination_point = NodePath("Destination")
+
+[node name="Destination" type="Marker2D" parent="."]
+position = Vector2(250, -251)
+gizmo_extents = 75.0
 
 [node name="Interaction Area" type="Area2D" parent="."]
 collision_mask = 2
