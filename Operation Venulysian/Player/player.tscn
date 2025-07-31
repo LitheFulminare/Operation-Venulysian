@@ -7,6 +7,7 @@
 size = Vector2(100, 100)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component")]
+collision_layer = 2
 script = ExtResource("1_4ntmi")
 movement_component = NodePath("Movement Controller")
 
