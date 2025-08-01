@@ -28,13 +28,19 @@ walk_speed = 350.0
 jump_velocity = 450.0
 jump_release_deceleration = 0.35
 
-[node name="Grappling Hook Controller" type="Node" parent="." node_paths=PackedStringArray("player", "path_2d")]
+[node name="Grappling Hook Controller" type="Node" parent="." node_paths=PackedStringArray("player", "path_2d", "path_follow_2d")]
 script = ExtResource("3_btcbx")
 player = NodePath("..")
 path_2d = NodePath("Path2D")
+path_follow_2d = NodePath("Path2D/PathFollow2D")
+player_speed = 1.65
 
 [node name="Path2D" type="Path2D" parent="Grappling Hook Controller"]
 curve = SubResource("Curve2D_btcbx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Grappling Hook Controller/Path2D"]
+rotation = -0.856636
+loop = false
 
 [node name="Dash Duration" type="Timer" parent="."]
 wait_time = 0.2
@@ -46,8 +52,6 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
-limit_left = 0
-limit_top = 0
 position_smoothing_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
