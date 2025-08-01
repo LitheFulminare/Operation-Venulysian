@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1vtmnwr2sk4q"]
+[gd_scene load_steps=6 format=3 uid="uid://b1vtmnwr2sk4q"]
 
 [ext_resource type="Script" uid="uid://creutxpg4tk0i" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://b4yrdgvplq3aq" path="res://Components/Entity/movement_controller.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://bja0wtxt55a36" path="res://Player/grappling_hook_controller.gd" id="3_btcbx"]
+
+[sub_resource type="Curve2D" id="Curve2D_btcbx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -250, -250, 0, 0, 475, -548)
+}
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfyey"]
 size = Vector2(100, 100)
@@ -22,8 +28,13 @@ walk_speed = 350.0
 jump_velocity = 450.0
 jump_release_deceleration = 0.35
 
-[node name="Grappling Hook Controller" type="Node" parent="."]
+[node name="Grappling Hook Controller" type="Node" parent="." node_paths=PackedStringArray("player", "path_2d")]
 script = ExtResource("3_btcbx")
+player = NodePath("..")
+path_2d = NodePath("Path2D")
+
+[node name="Path2D" type="Path2D" parent="Grappling Hook Controller"]
+curve = SubResource("Curve2D_btcbx")
 
 [node name="Dash Duration" type="Timer" parent="."]
 wait_time = 0.2
