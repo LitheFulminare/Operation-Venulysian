@@ -20,5 +20,6 @@ func block_movement() -> void:
 func unblock_movement() -> void:
 	is_movement_blocked = false
 
+## Updates the GrapplingHookComponent on which GrapplingPoint the player just interacted with
 func update_grappling_point(destination: GrapplingPoint) -> void:
 	grappling_hook_component.current_grappling_point = destination

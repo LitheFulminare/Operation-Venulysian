@@ -22,7 +22,6 @@ sources/0 = SubResource("TileSetAtlasSource_vfyey")
 position = Vector2(203, 573)
 
 [node name="Line2D" parent="Player/Grappling Hook Controller" index="1"]
-scale = Vector2(1, 1)
 points = PackedVector2Array(252, 554.25, 698, 205.25)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

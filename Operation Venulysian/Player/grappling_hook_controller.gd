@@ -19,9 +19,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Grappling Hook"):
 		use_grappling_hook()
 
+# called once when the player presses Grappling Hook button
 func use_grappling_hook() -> void:
 	if PlayerVars.is_in_grappling_range:
-		print("Player destination: " + str(current_grappling_point.destination_point))
 		path_2d.curve.set_point_position(0, player.global_position)
 		path_2d.curve.set_point_position(1, current_grappling_point.destination_point.global_position)
 		player.is_in_grappling_hook = true
@@ -30,15 +30,15 @@ func use_grappling_hook() -> void:
 	else:
 		print("Player used grappling hook outside of range")
 
+## Updates the player and chain position until the player gets to the destination
 func move_player(delta: float) -> void:
 	if path_follow_2d.progress_ratio < 1:
+		# update player and chain position
 		path_follow_2d.progress_ratio += player_speed  * delta
 		player.global_position = path_follow_2d.global_position
 		line2d.global_position = Vector2.ZERO
 		line2d.set_point_position(1, player.global_position)
-		print(line2d.get_point_position(1))
 	else:
-		print("Player landed")
 		line2d.visible = false
 		path_follow_2d.progress_ratio = 0
 		player.is_in_grappling_hook = false
