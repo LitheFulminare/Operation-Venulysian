@@ -47,8 +47,8 @@ loop = false
 [node name="Line2D" type="Line2D" parent="Grappling Hook Controller"]
 texture_repeat = 2
 position = Vector2(46, -24.25)
-scale = Vector2(7, 7)
 points = PackedVector2Array(78.4286, -71.5357, 0, 0)
+width = 35.0
 texture = ExtResource("4_gwnis")
 texture_mode = 1
 
