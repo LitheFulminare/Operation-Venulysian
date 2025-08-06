@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://creutxpg4tk0i" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://b4yrdgvplq3aq" path="res://Components/Entity/movement_controller.gd" id="1_l8h54"]
-[ext_resource type="Script" uid="uid://bja0wtxt55a36" path="res://Player/grappling_hook_controller.gd" id="3_btcbx"]
+[ext_resource type="Script" path="res://Player/grappling_hook_controller.gd" id="3_btcbx"]
 
 [sub_resource type="Curve2D" id="Curve2D_btcbx"]
 _data = {

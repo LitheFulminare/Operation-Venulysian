@@ -29,7 +29,7 @@ tile_set = SubResource("TileSet_w2dvv")
 position = Vector2(1657, -247)
 
 [node name="Destination" parent="Grappling point" index="0"]
-position = Vector2(-6, 259)
+position = Vector2(-6, 278)
 
 [node name="Interaction Area" parent="Grappling point" index="1"]
 position = Vector2(121, -5)
