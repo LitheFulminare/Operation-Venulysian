@@ -26,6 +26,7 @@ func use_grappling_hook() -> void:
 		path_2d.curve.set_point_position(1, current_grappling_point.destination_point.global_position)
 		player.is_in_grappling_hook = true
 		line2d.set_point_position(0, current_grappling_point.global_position)
+		line2d.set_point_position(1, player.global_position)
 		line2d.visible = true
 	else:
 		print("Player used grappling hook outside of range")

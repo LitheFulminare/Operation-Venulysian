@@ -45,6 +45,7 @@ rotation = -0.856636
 loop = false
 
 [node name="Line2D" type="Line2D" parent="Grappling Hook Controller"]
+visible = false
 texture_repeat = 2
 position = Vector2(46, -24.25)
 points = PackedVector2Array(78.4286, -71.5357, 0, 0)
