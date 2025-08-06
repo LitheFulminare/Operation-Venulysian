@@ -10,7 +10,10 @@ extends Node
 @export_group("Parameters")
 @export var player_speed: float = 500
 
-var current_grappling_hook_position: Vector2
+var current_grappling_point: GrapplingPoint
+
+func _ready() -> void:
+	line2d.visible = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Grappling Hook"):
@@ -18,12 +21,12 @@ func _process(delta: float) -> void:
 
 func use_grappling_hook() -> void:
 	if PlayerVars.is_in_grappling_range:
-		print("Player destination: " + str(current_grappling_hook_position))
+		print("Player destination: " + str(current_grappling_point.destination_point))
 		path_2d.curve.set_point_position(0, player.global_position)
-		path_2d.curve.set_point_position(1, current_grappling_hook_position)
+		path_2d.curve.set_point_position(1, current_grappling_point.destination_point.global_position)
 		player.is_in_grappling_hook = true
-		line2d.set_point_position(0, current_grappling_hook_position)
-		print("Grappling point position: " + str(current_grappling_hook_position))
+		line2d.set_point_position(0, current_grappling_point.global_position)
+		line2d.visible = true
 	else:
 		print("Player used grappling hook outside of range")
 
@@ -36,5 +39,6 @@ func move_player(delta: float) -> void:
 		print(line2d.get_point_position(1))
 	else:
 		print("Player landed")
+		line2d.visible = false
 		path_follow_2d.progress_ratio = 0
 		player.is_in_grappling_hook = false

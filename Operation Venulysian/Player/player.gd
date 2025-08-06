@@ -20,5 +20,5 @@ func block_movement() -> void:
 func unblock_movement() -> void:
 	is_movement_blocked = false
 
-func update_grappling_hook_position(destination: Vector2) -> void:
-	grappling_hook_component.current_grappling_hook_position = destination
+func update_grappling_point(destination: GrapplingPoint) -> void:
+	grappling_hook_component.current_grappling_point = destination
