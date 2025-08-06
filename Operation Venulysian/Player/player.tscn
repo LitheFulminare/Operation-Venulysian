@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://creutxpg4tk0i" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://b4yrdgvplq3aq" path="res://Components/Entity/movement_controller.gd" id="1_l8h54"]
-[ext_resource type="Script" path="res://Player/grappling_hook_controller.gd" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://bja0wtxt55a36" path="res://Player/grappling_hook_controller.gd" id="3_btcbx"]
 [ext_resource type="Texture2D" uid="uid://wsc0yr7432b8" path="res://Player/Sprites/Chain tilable 2.png" id="4_gwnis"]
 
 [sub_resource type="Curve2D" id="Curve2D_btcbx"]
@@ -29,11 +29,12 @@ walk_speed = 350.0
 jump_velocity = 450.0
 jump_release_deceleration = 0.35
 
-[node name="Grappling Hook Controller" type="Node" parent="." node_paths=PackedStringArray("player", "path_2d", "path_follow_2d")]
+[node name="Grappling Hook Controller" type="Node" parent="." node_paths=PackedStringArray("player", "path_2d", "path_follow_2d", "line2d")]
 script = ExtResource("3_btcbx")
 player = NodePath("..")
 path_2d = NodePath("Path2D")
 path_follow_2d = NodePath("Path2D/PathFollow2D")
+line2d = NodePath("Line2D")
 player_speed = 1.65
 
 [node name="Path2D" type="Path2D" parent="Grappling Hook Controller"]
@@ -47,7 +48,7 @@ loop = false
 texture_repeat = 2
 position = Vector2(46, -24.25)
 scale = Vector2(7, 7)
-points = PackedVector2Array(17.7143, -8.82143, -23.5714, -17.8214, -70, -32.5357, -100.714, -58.1071)
+points = PackedVector2Array(78.4286, -71.5357, 0, 0)
 texture = ExtResource("4_gwnis")
 texture_mode = 1
 
