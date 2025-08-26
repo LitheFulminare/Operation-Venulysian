@@ -1,3 +1,5 @@
 On melee_attack() I should also check if player is mid animation, but I don't have that now.
 
 Also, I have to create the Area2D which will look for enemies' and possibly destructibles' hitboxes.
+
+Maybe it'd be cool if there wasan animation that plays when the player hits a wall with the sword
