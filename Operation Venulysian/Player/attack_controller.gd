@@ -21,7 +21,7 @@ var current_attack: int = 1
 func _ready() -> void:
 	attack_window_timer.wait_time = combo_window
 	#sword_hit_window.waittime
-	sword_hitbox.monitorng = false
+	sword_hitbox.monitoring = false
 
 func melee_attack():
 	# First I should check if the player is in the middle of the animation,
