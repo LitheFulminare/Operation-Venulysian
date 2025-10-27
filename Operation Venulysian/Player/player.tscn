@@ -55,12 +55,13 @@ collision_mask = 5
 position = Vector2(94, -31.25)
 shape = SubResource("RectangleShape2D_k53q1")
 
-[node name="Grappling Hook Controller" type="Node" parent="." node_paths=PackedStringArray("player", "path_2d", "path_follow_2d", "line2d")]
+[node name="Grappling Hook Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "path_2d", "path_follow_2d", "line2d", "raycast")]
 script = ExtResource("3_btcbx")
 player = NodePath("..")
 path_2d = NodePath("Path2D")
 path_follow_2d = NodePath("Path2D/PathFollow2D")
 line2d = NodePath("Line2D")
+raycast = NodePath("RayCast2D")
 player_speed = 1.65
 
 [node name="Path2D" type="Path2D" parent="Grappling Hook Controller"]
@@ -71,13 +72,13 @@ rotation = -0.856636
 loop = false
 
 [node name="Line2D" type="Line2D" parent="Grappling Hook Controller"]
-visible = false
 texture_repeat = 2
-position = Vector2(46, -24.25)
 points = PackedVector2Array(78.4286, -71.5357, 0, 0)
 width = 35.0
 texture = ExtResource("4_gwnis")
 texture_mode = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="Grappling Hook Controller"]
 
 [node name="Dash Duration" type="Timer" parent="."]
 wait_time = 0.2
