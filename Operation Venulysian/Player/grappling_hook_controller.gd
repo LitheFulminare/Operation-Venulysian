@@ -12,10 +12,15 @@ extends Node2D
 @export var player_speed: float = 500
 
 var current_grappling_point: GrapplingPoint
+var raycast_collision_point: Vector2
 var mouse_position: Vector2
 
 func _ready() -> void:
 	line2d.visible = false
+
+func _process(delta: float) -> void:
+	if player.is_in_grappling_hook:
+		update_grappling_hook()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Grappling Hook"):
@@ -23,19 +28,28 @@ func _physics_process(delta: float) -> void:
 
 # called once when the player presses Grappling Hook button
 func use_grappling_hook() -> void:
+	player.is_in_grappling_hook = true
+	
 	mouse_position =  get_global_mouse_position()
+	
 	raycast.global_position = player.global_position
 	raycast.target_position =  (mouse_position - player.global_position) * 5
 		
 	raycast.force_raycast_update()
 	
 	line2d.visible = true
-	line2d.set_point_position(0, raycast.get_collision_point() - player.global_position)
+	raycast_collision_point = raycast.get_collision_point()
+	print(raycast_collision_point)
+	line2d.set_point_position(0, raycast_collision_point  - player.global_position)
 	line2d.set_point_position(1, Vector2.ZERO)
 	
-	
-	
-	
+	#var direction: Vector2 = raycast.get_collision_point() - player.global_position
+	#player.velocity += direction
+
+func update_grappling_hook() -> void:
+	line2d.set_point_position(0, raycast_collision_point - player.global_position)
+	line2d.set_point_position(1, Vector2.ZERO)
+
 #region Old grappling hook logic
 	
 	#if PlayerVars.is_in_grappling_range:
