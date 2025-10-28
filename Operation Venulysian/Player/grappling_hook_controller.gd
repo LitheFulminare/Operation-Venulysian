@@ -10,6 +10,7 @@ extends Node2D
 
 @export_group("Parameters")
 @export var player_speed: float = 500
+#@export var grappling_speed: float = 50
 
 var current_grappling_point: GrapplingPoint
 var raycast_collision_point: Vector2
@@ -42,13 +43,14 @@ func use_grappling_hook() -> void:
 	print(raycast_collision_point)
 	line2d.set_point_position(0, raycast_collision_point  - player.global_position)
 	line2d.set_point_position(1, Vector2.ZERO)
-	
-	#var direction: Vector2 = raycast.get_collision_point() - player.global_position
-	#player.velocity += direction
 
-func update_grappling_hook() -> void:
+func update_grappling_hook() -> void:	
 	line2d.set_point_position(0, raycast_collision_point - player.global_position)
 	line2d.set_point_position(1, Vector2.ZERO)
+	
+	var direction = raycast_collision_point - player.global_position
+	direction = direction.normalized()
+	player.velocity = direction * 2000
 
 #region Old grappling hook logic
 	
