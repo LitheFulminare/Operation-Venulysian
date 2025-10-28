@@ -2,7 +2,7 @@ class_name MovementComponent
 extends Node
 
 @export_group("Components")
-@export var character_body: CharacterBody2D
+@export var character_body: Player
 @export var dash_duration_timer: Timer
 @export var dash_cooldown_timer: Timer
 
@@ -22,6 +22,10 @@ var double_jump_active:bool = false
 @onready var dash_speed: float = walk_speed * dash_speed_multiplier
 
 func move(delta: float) -> void:
+	if character_body.is_in_grappling_hook:
+		character_body.grappling_hook_component.update_grappling_hook()
+		return
+	
 	if !character_body.is_on_floor() && !is_dashing:
 		character_body.velocity += character_body.get_gravity() * delta
 
@@ -56,7 +60,12 @@ func move(delta: float) -> void:
 		character_body.velocity.x = direction * walk_speed
 		is_looking_right = direction > 0
 	else:
-		character_body.velocity.x = move_toward(character_body.velocity.x, 0, walk_speed)
+		if character_body.is_on_floor():
+			character_body.grappling_hook_component.hovering = false
+		if character_body.grappling_hook_component.hovering:
+			character_body.velocity.x = move_toward(character_body.velocity.x, 0, 10)
+		else:
+			character_body.velocity.x = move_toward(character_body.velocity.x, 0, walk_speed)
 
 	character_body.move_and_slide()
 

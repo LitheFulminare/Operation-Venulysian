@@ -15,17 +15,22 @@ extends Node2D
 var current_grappling_point: GrapplingPoint
 var raycast_collision_point: Vector2
 var mouse_position: Vector2
+var hovering: bool = false
 
 func _ready() -> void:
 	line2d.visible = false
 
 func _process(delta: float) -> void:
+	return
 	if player.is_in_grappling_hook:
 		update_grappling_hook()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Grappling Hook"):
-		use_grappling_hook()
+		if player.is_in_grappling_hook:
+			stop_using_grappling_hook()
+		else:
+			use_grappling_hook()
 
 # called once when the player presses Grappling Hook button
 func use_grappling_hook() -> void:
@@ -50,7 +55,14 @@ func update_grappling_hook() -> void:
 	
 	var direction = raycast_collision_point - player.global_position
 	direction = direction.normalized()
-	player.velocity = direction * 2000
+	player.velocity += direction * 40
+	
+	player.move_and_slide()
+
+func stop_using_grappling_hook() -> void:
+	player.is_in_grappling_hook = false
+	line2d.visible = false
+	hovering = true
 
 #region Old grappling hook logic
 	
