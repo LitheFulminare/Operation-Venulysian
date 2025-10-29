@@ -5,30 +5,36 @@ extends Node2D
 @export var player: Player
 @export var line2d: Line2D
 @export var raycast: RayCast2D
+@export var cooldown_timer: Timer
 
 @export_group("Parameters")
 @export var player_speed: float = 500
 @export var grappling_speed: float = 40
 @export var max_grappling_speed: float = 500
 @export var hovering_friction: float = 10
+@export var coolddown_duration: float = 3;
 
 var raycast_collision_point: Vector2
 var mouse_position: Vector2
 var hovering: bool = false
+var is_on_cooldown: bool
 
 func _ready() -> void:
+	cooldown_timer.wait_time = coolddown_duration
 	line2d.visible = false
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Grappling Hook"):
 		if player.is_in_grappling_hook:
 			stop_using_grappling_hook()
-		else:
+		elif !is_on_cooldown:
 			use_grappling_hook()
 
 ## Called once when the player presses Grappling Hook button
 func use_grappling_hook() -> void:
+	is_on_cooldown = true
 	player.is_in_grappling_hook = true
+	player.movement_component.double_jump_active = true
 	
 	mouse_position =  get_global_mouse_position()
 	
@@ -61,6 +67,10 @@ func update_grappling_hook() -> void:
 	player.move_and_slide()
 
 func stop_using_grappling_hook() -> void:
+	cooldown_timer.start()
 	player.is_in_grappling_hook = false
 	line2d.visible = false
 	hovering = true
+
+func _on_grappling_hook_cooldown_timeout() -> void:
+	is_on_cooldown = false
