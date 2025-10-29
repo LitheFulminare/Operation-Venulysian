@@ -3,8 +3,6 @@ extends Node2D
 
 @export_group("Components")
 @export var player: Player
-@export var path_2d: Path2D
-@export var path_follow_2d: PathFollow2D
 @export var line2d: Line2D
 @export var raycast: RayCast2D
 
@@ -12,19 +10,14 @@ extends Node2D
 @export var player_speed: float = 500
 @export var grappling_speed: float = 40
 @export var max_grappling_speed: float = 500
+@export var hovering_friction: float = 10
 
-var current_grappling_point: GrapplingPoint
 var raycast_collision_point: Vector2
 var mouse_position: Vector2
 var hovering: bool = false
 
 func _ready() -> void:
 	line2d.visible = false
-
-func _process(delta: float) -> void:
-	return
-	if player.is_in_grappling_hook:
-		update_grappling_hook()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Grappling Hook"):
@@ -33,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			use_grappling_hook()
 
-# called once when the player presses Grappling Hook button
+## Called once when the player presses Grappling Hook button
 func use_grappling_hook() -> void:
 	player.is_in_grappling_hook = true
 	
@@ -41,14 +34,17 @@ func use_grappling_hook() -> void:
 	
 	raycast.global_position = player.global_position
 	raycast.target_position =  (mouse_position - player.global_position) * 5
-		
+	
+	# apparently raycast collision is delayed by one frame, so it must be force updated
 	raycast.force_raycast_update()
+	raycast_collision_point = raycast.get_collision_point()
 	
 	line2d.visible = true
-	raycast_collision_point = raycast.get_collision_point()
 	line2d.set_point_position(0, raycast_collision_point  - player.global_position)
 	line2d.set_point_position(1, Vector2.ZERO)
 
+## Called every frame is_in_grappling_hook is true.
+## Updates the chain sprite and player's velocity.
 func update_grappling_hook() -> void:
 	# update chain sprite
 	line2d.set_point_position(0, raycast_collision_point - player.global_position)
@@ -57,11 +53,10 @@ func update_grappling_hook() -> void:
 	# set player velocity
 	var direction = raycast_collision_point - player.global_position
 	direction = direction.normalized()
+	# I think that clamping be velocity before adding it makes it more organic, I like it
 	player.velocity.x = clamp(player.velocity.x, -max_grappling_speed, max_grappling_speed)
 	player.velocity.y = clamp(player.velocity.y, -max_grappling_speed, max_grappling_speed)
 	player.velocity += direction * grappling_speed
-	
-	print(player.velocity)
 	
 	player.move_and_slide()
 
@@ -69,29 +64,3 @@ func stop_using_grappling_hook() -> void:
 	player.is_in_grappling_hook = false
 	line2d.visible = false
 	hovering = true
-
-#region Old grappling hook logic
-	
-	#if PlayerVars.is_in_grappling_range:
-		#path_2d.curve.set_point_position(0, player.global_position)
-		#path_2d.curve.set_point_position(1, current_grappling_point.destination_point.global_position)
-		#player.is_in_grappling_hook = true
-		#line2d.set_point_position(0, current_grappling_point.global_position)
-		#line2d.set_point_position(1, player.global_position)
-		#line2d.visible = true
-	#else:
-		#print("Player used grappling hook outside of range")
-#
-### Updates the player and chain position until the player gets to the destination
-#func move_player(delta: float) -> void:
-	#if path_follow_2d.progress_ratio < 1:
-		## update player and chain position
-		#path_follow_2d.progress_ratio += player_speed  * delta
-		#player.global_position = path_follow_2d.global_position
-		#line2d.global_position = Vector2.ZERO
-		#line2d.set_point_position(1, player.global_position)
-	#else:
-		#line2d.visible = false
-		#path_follow_2d.progress_ratio = 0
-		#player.is_in_grappling_hook = false
-#endregion

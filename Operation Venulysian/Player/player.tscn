@@ -25,9 +25,9 @@ movement_component = NodePath("Movement Controller")
 grappling_hook_component = NodePath("Grappling Hook Controller")
 attack_controller = NodePath("Attack Controller")
 
-[node name="Movement Controller" type="Node" parent="." node_paths=PackedStringArray("character_body", "dash_duration_timer", "dash_cooldown_timer")]
+[node name="Movement Controller" type="Node" parent="." node_paths=PackedStringArray("player", "dash_duration_timer", "dash_cooldown_timer")]
 script = ExtResource("1_l8h54")
-character_body = NodePath("..")
+player = NodePath("..")
 dash_duration_timer = NodePath("../Dash Duration")
 dash_cooldown_timer = NodePath("../Dash Cooldown")
 walk_speed = 350.0
@@ -55,16 +55,15 @@ collision_mask = 5
 position = Vector2(94, -31.25)
 shape = SubResource("RectangleShape2D_k53q1")
 
-[node name="Grappling Hook Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "path_2d", "path_follow_2d", "line2d", "raycast")]
+[node name="Grappling Hook Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "line2d", "raycast")]
 script = ExtResource("3_btcbx")
 player = NodePath("..")
-path_2d = NodePath("Path2D")
-path_follow_2d = NodePath("Path2D/PathFollow2D")
 line2d = NodePath("Line2D")
 raycast = NodePath("RayCast2D")
 player_speed = 1.65
 grappling_speed = 35.0
 max_grappling_speed = 800.0
+hovering_friction = 9.0
 
 [node name="Path2D" type="Path2D" parent="Grappling Hook Controller"]
 curve = SubResource("Curve2D_btcbx")

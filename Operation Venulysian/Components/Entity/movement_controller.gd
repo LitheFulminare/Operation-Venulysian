@@ -2,7 +2,7 @@ class_name MovementComponent
 extends Node
 
 @export_group("Components")
-@export var character_body: Player
+@export var player: Player
 @export var dash_duration_timer: Timer
 @export var dash_cooldown_timer: Timer
 
@@ -22,30 +22,36 @@ var double_jump_active:bool = false
 @onready var dash_speed: float = walk_speed * dash_speed_multiplier
 
 func move(delta: float) -> void:
-	if character_body.is_in_grappling_hook:
-		character_body.grappling_hook_component.update_grappling_hook()
+	if player.is_in_grappling_hook:
+		# to ensure move_and_slide() won't be called twice
+		player.grappling_hook_component.update_grappling_hook()
 		return
 	
-	if !character_body.is_on_floor() && !is_dashing:
-		character_body.velocity += character_body.get_gravity() * delta
-
+	# fall
+	if !player.is_on_floor() && !is_dashing:
+		player.velocity += player.get_gravity() * delta
+		
+	# jump and double jump
 	if Input.is_action_just_pressed("Up"):
-		if character_body.is_on_floor():
-			character_body.velocity.y = -jump_velocity
+		if player.is_on_floor():
+			player.velocity.y = -jump_velocity
 			double_jump_active = true
 		elif PlayerVars.double_jump_unlocked && double_jump_active:
-			character_body.velocity.y = -jump_velocity
+			player.velocity.y = -jump_velocity
 			double_jump_active = false
-
+			
+	# variable jump height
 	if Input.is_action_just_released("Up"):
-		character_body.velocity.y *= jump_release_deceleration
-		
+		player.velocity.y *= jump_release_deceleration
+	
+	# dashing
 	if PlayerVars.dash_unlocked && Input.is_action_just_pressed("Dash") && !is_dash_on_cooldown:
 		is_dashing = true
 		is_dash_on_cooldown = true
 		walk_speed = dash_speed
 		dash_duration_timer.start()
 		
+	# left and right movement
 	var direction: float
 	
 	if is_dashing:
@@ -57,17 +63,17 @@ func move(delta: float) -> void:
 		direction = Input.get_axis("Left", "Right")
 	
 	if direction:
-		character_body.velocity.x = direction * walk_speed
+		player.velocity.x = direction * walk_speed
 		is_looking_right = direction > 0
 	else:
-		if character_body.is_on_floor():
-			character_body.grappling_hook_component.hovering = false
-		if character_body.grappling_hook_component.hovering:
-			character_body.velocity.x = move_toward(character_body.velocity.x, 0, 10)
+		if player.is_on_floor():
+			player.grappling_hook_component.hovering = false
+		if player.grappling_hook_component.hovering:
+			player.velocity.x = move_toward(player.velocity.x, 0, player.grappling_hook_component.hovering_friction)
 		else:
-			character_body.velocity.x = move_toward(character_body.velocity.x, 0, walk_speed)
-
-	character_body.move_and_slide()
+			player.velocity.x = move_toward(player.velocity.x, 0, walk_speed)
+			
+	player.move_and_slide()
 
 
 func _on_dash_duration_timeout() -> void:
