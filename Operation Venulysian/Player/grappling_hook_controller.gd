@@ -33,8 +33,6 @@ func _physics_process(delta: float) -> void:
 ## Called once when the player presses Grappling Hook button
 func use_grappling_hook() -> void:
 	is_on_cooldown = true
-	player.is_in_grappling_hook = true
-	player.movement_component.double_jump_active = true
 	
 	mouse_position =  get_global_mouse_position()
 	
@@ -46,8 +44,21 @@ func use_grappling_hook() -> void:
 	raycast_collision_point = raycast.get_collision_point()
 	
 	line2d.visible = true
-	line2d.set_point_position(0, raycast_collision_point  - player.global_position)
+	fire_chain()
+
+func fire_chain() -> void:
 	line2d.set_point_position(1, Vector2.ZERO)
+	
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_method(update_chain_sprite, line2d.get_point_position(0), 
+	raycast_collision_point  - player.global_position, 0.2)
+	
+	await tween.finished
+	player.is_in_grappling_hook = true
+	player.movement_component.double_jump_active = true
+
+func update_chain_sprite(new_position: Vector2) -> void:
+	line2d.set_point_position(0, new_position)
 
 ## Called every frame is_in_grappling_hook is true.
 ## Updates the chain sprite and player's velocity.
@@ -69,8 +80,18 @@ func update_grappling_hook() -> void:
 func stop_using_grappling_hook() -> void:
 	cooldown_timer.start()
 	player.is_in_grappling_hook = false
-	line2d.visible = false
 	hovering = true
+	
+	retract_chain()
+
+func retract_chain() -> void:
+	line2d.set_point_position(1, Vector2.ZERO)
+	
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_method(update_chain_sprite, line2d.get_point_position(0), Vector2.ZERO, 0.2)
+	
+	await tween.finished
+	line2d.visible = false
 
 func _on_grappling_hook_cooldown_timeout() -> void:
 	is_on_cooldown = false
