@@ -10,7 +10,8 @@ extends Node2D
 
 @export_group("Parameters")
 @export var player_speed: float = 500
-#@export var grappling_speed: float = 50
+@export var grappling_speed: float = 40
+@export var max_grappling_speed: float = 500
 
 var current_grappling_point: GrapplingPoint
 var raycast_collision_point: Vector2
@@ -45,17 +46,22 @@ func use_grappling_hook() -> void:
 	
 	line2d.visible = true
 	raycast_collision_point = raycast.get_collision_point()
-	print(raycast_collision_point)
 	line2d.set_point_position(0, raycast_collision_point  - player.global_position)
 	line2d.set_point_position(1, Vector2.ZERO)
 
-func update_grappling_hook() -> void:	
+func update_grappling_hook() -> void:
+	# update chain sprite
 	line2d.set_point_position(0, raycast_collision_point - player.global_position)
 	line2d.set_point_position(1, Vector2.ZERO)
 	
+	# set player velocity
 	var direction = raycast_collision_point - player.global_position
 	direction = direction.normalized()
-	player.velocity += direction * 40
+	player.velocity.x = clamp(player.velocity.x, -max_grappling_speed, max_grappling_speed)
+	player.velocity.y = clamp(player.velocity.y, -max_grappling_speed, max_grappling_speed)
+	player.velocity += direction * grappling_speed
+	
+	print(player.velocity)
 	
 	player.move_and_slide()
 

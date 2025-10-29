@@ -63,6 +63,8 @@ path_follow_2d = NodePath("Path2D/PathFollow2D")
 line2d = NodePath("Line2D")
 raycast = NodePath("RayCast2D")
 player_speed = 1.65
+grappling_speed = 35.0
+max_grappling_speed = 800.0
 
 [node name="Path2D" type="Path2D" parent="Grappling Hook Controller"]
 curve = SubResource("Curve2D_btcbx")
@@ -92,6 +94,9 @@ one_shot = true
 zoom = Vector2(0.7, 0.7)
 process_callback = 0
 position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.4
+editor_draw_drag_margin = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -50.0
