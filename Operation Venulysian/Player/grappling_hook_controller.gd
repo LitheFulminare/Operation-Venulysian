@@ -46,6 +46,7 @@ func use_grappling_hook() -> void:
 	line2d.visible = true
 	fire_chain()
 
+## Tweens the chain position to the raycast collision point
 func fire_chain() -> void:
 	line2d.set_point_position(1, Vector2.ZERO)
 	
@@ -57,6 +58,7 @@ func fire_chain() -> void:
 	player.is_in_grappling_hook = true
 	player.movement_component.double_jump_active = true
 
+## Used to tween the chain position
 func update_chain_sprite(new_position: Vector2) -> void:
 	line2d.set_point_position(0, new_position)
 
@@ -84,6 +86,7 @@ func stop_using_grappling_hook() -> void:
 	
 	retract_chain()
 
+## Tweens the chain position back to the player
 func retract_chain() -> void:
 	line2d.set_point_position(1, Vector2.ZERO)
 	
