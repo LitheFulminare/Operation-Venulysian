@@ -18,6 +18,7 @@ var raycast_collision_point: Vector2
 var mouse_position: Vector2
 var hovering: bool = false
 var is_on_cooldown: bool
+var grappling_hook_missed: bool
 
 func _ready() -> void:
 	cooldown_timer.wait_time = coolddown_duration
@@ -29,6 +30,8 @@ func _physics_process(delta: float) -> void:
 			stop_using_grappling_hook()
 		elif !is_on_cooldown:
 			use_grappling_hook()
+	if Input.is_action_just_pressed("Up") && player.is_in_grappling_hook:
+		stop_using_grappling_hook()
 
 ## Called once when the player presses Grappling Hook button
 func use_grappling_hook() -> void:
@@ -37,11 +40,16 @@ func use_grappling_hook() -> void:
 	mouse_position =  get_global_mouse_position()
 	
 	raycast.global_position = player.global_position
-	raycast.target_position =  (mouse_position - player.global_position) * 5
+	raycast.target_position =  (mouse_position - player.global_position) * 1
 	
 	# apparently raycast collision is delayed by one frame, so it must be force updated
 	raycast.force_raycast_update()
-	raycast_collision_point = raycast.get_collision_point()
+	if raycast.is_colliding():
+		raycast_collision_point = raycast.get_collision_point()
+		grappling_hook_missed = false
+	else:
+		raycast_collision_point = raycast.target_position + player.global_position
+		grappling_hook_missed = true
 	
 	line2d.visible = true
 	fire_chain()
@@ -55,8 +63,12 @@ func fire_chain() -> void:
 	raycast_collision_point  - player.global_position, 0.2)
 	
 	await tween.finished
-	player.is_in_grappling_hook = true
-	player.movement_component.double_jump_active = true
+	if !grappling_hook_missed:
+		player.is_in_grappling_hook = true
+		player.movement_component.double_jump_active = true
+	else:
+		retract_chain()
+		cooldown_timer.start(0.5)
 
 ## Used to tween the chain position
 func update_chain_sprite(new_position: Vector2) -> void:
@@ -80,7 +92,7 @@ func update_grappling_hook() -> void:
 	player.move_and_slide()
 
 func stop_using_grappling_hook() -> void:
-	cooldown_timer.start()
+	cooldown_timer.start(coolddown_duration)
 	player.is_in_grappling_hook = false
 	hovering = true
 	
