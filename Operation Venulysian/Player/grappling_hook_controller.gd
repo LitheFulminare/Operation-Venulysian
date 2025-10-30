@@ -40,7 +40,7 @@ func use_grappling_hook() -> void:
 	mouse_position =  get_global_mouse_position()
 	
 	raycast.global_position = player.global_position
-	raycast.target_position =  (mouse_position - player.global_position) * 1
+	raycast.target_position =  (mouse_position - player.global_position) * 5
 	
 	# apparently raycast collision is delayed by one frame, so it must be force updated
 	raycast.force_raycast_update()
@@ -80,6 +80,13 @@ func update_grappling_hook() -> void:
 	# update chain sprite
 	line2d.set_point_position(0, raycast_collision_point - player.global_position)
 	line2d.set_point_position(1, Vector2.ZERO)
+	
+	var distance: float = (raycast_collision_point - player.global_position).length()
+	if distance < 70:
+		player.velocity.x = move_toward(player.velocity.x, 0, 60)
+		player.velocity.y = move_toward(player.velocity.y, 0, 60)
+		player.move_and_slide()
+		return
 	
 	# set player velocity
 	var direction = raycast_collision_point - player.global_position
