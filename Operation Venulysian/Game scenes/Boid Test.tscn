@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=4 uid="uid://cbl2keble5hfl"]
+
+[ext_resource type="Texture2D" uid="uid://c1t3pshnpfysr" path="res://icon.svg" id="2_peyqt"]
+[ext_resource type="PackedScene" uid="uid://cotatg05vt0u2" path="res://Enemies/Shredder/Shredder.tscn" id="3_3n16j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfyey"]
+texture = ExtResource("2_peyqt")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_w2dvv"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_vfyey")
+
+[node name="Prototyping" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+tile_map_data = PackedByteArray("AAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAXAAYAAAAAAAAAAAAXAAcAAAAAAAAAAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAAAAAAZAAYAAAAAAAAAAAAZAAcAAAAAAAAAAAAaAAYAAAAAAAAAAAAaAAcAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAaAAQAAAAAAAAAAAAaAAUAAAAAAAAAAAAMAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAAIAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAAKAP3/AAAAAAAAAAALAP3/AAAAAAAAAAAMAP3/AAAAAAAAAAANAP3/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAP3/AAAAAAAAAAARAP3/AAAAAAAAAAASAP3/AAAAAAAAAAATAP3/AAAAAAAAAAAUAP3/AAAAAAAAAAAVAP3/AAAAAAAAAAAWAP3/AAAAAAAAAAAXAP3/AAAAAAAAAAAYAP3/AAAAAAAAAAAZAP3/AAAAAAAAAAAaAP3/AAAAAAAAAAAaAP7/AAAAAAAAAAAaAP//AAAAAAAAAAAaAAAAAAAAAAAAAAAaAAEAAAAAAAAAAAAaAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_w2dvv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Shredder" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(708, 325)
+
+[node name="Shredder2" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(934, 91)
+
+[node name="Shredder3" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(664, 354)
+
+[node name="Shredder4" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(756, 295)
+
+[node name="Shredder5" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(765, 414)
+
+[node name="Shredder6" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(504, 279)
+
+[node name="Shredder7" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(273, 162)
+
+[node name="Shredder8" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(264, 408)
+
+[node name="Shredder9" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(358, 368)
+
+[node name="Shredder10" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(219, 430)
+
+[node name="Shredder11" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(244, 181)
+
+[node name="Shredder12" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(320, 397)
+
+[node name="Shredder13" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(386, 336)
+
+[node name="Shredder14" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(200, 162)
+
+[node name="Shredder15" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(494, 165)
+
+[node name="Shredder16" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(864, 142)
+
+[node name="Shredder17" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(480, 192)
+
+[node name="Shredder18" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(546, 140)
+
+[node name="Shredder19" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(454, 463)
+
+[node name="Shredder20" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(525, 439)
+
+[node name="Shredder21" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(499, 470)
+
+[node name="Shredder22" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(726, 437)
+
+[node name="Shredder23" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(712, 382)
+
+[node name="Shredder24" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(734, 359)
+
+[node name="Shredder25" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(882, 112)
+
+[node name="Shredder26" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(922, 136)
+
+[node name="Shredder27" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(450, 145)
+
+[node name="Shredder28" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(217, 145)
+
+[node name="Shredder29" parent="." instance=ExtResource("3_3n16j")]
+position = Vector2(191, 129)
