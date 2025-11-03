@@ -9,7 +9,7 @@ size = Vector2(39.585, 39.61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grmx2"]
 size = Vector2(174, 100)
 
-[node name="Shredder" type="Area2D"]
+[node name="Shredder" type="Area2D" groups=["boid"]]
 script = ExtResource("1_grmx2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
