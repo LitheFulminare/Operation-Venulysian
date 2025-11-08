@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1e8mjavv4eus"]
+
+[ext_resource type="Script" uid="uid://db4kqsh4g1gv7" path="res://Tech Art/Particles/Gun Flash/particle_manager.gd" id="1_5pxb6"]
+
+[sub_resource type="Gradient" id="Gradient_a75k2"]
+offsets = PackedFloat32Array(0, 0.514286, 0.985714)
+colors = PackedColorArray(0.0212402, 0, 0.679688, 1, 0.0150199, 0.258538, 0.773493, 0.707143, 0.03125, 0, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_52ihp"]
+gradient = SubResource("Gradient_a75k2")
+
+[sub_resource type="Curve" id="Curve_52ihp"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_748lf"]
+curve = SubResource("Curve_52ihp")
+
+[sub_resource type="Curve" id="Curve_a75k2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.554217, 0.831461), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_52ihp"]
+curve = SubResource("Curve_a75k2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a75k2"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 30.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -52.5
+linear_accel_max = -25.0
+linear_accel_curve = SubResource("CurveTexture_748lf")
+damping_min = 16.248
+damping_max = 60.0
+scale_curve = SubResource("CurveTexture_52ihp")
+color_ramp = SubResource("GradientTexture1D_52ihp")
+hue_variation_min = -0.03
+hue_variation_max = 0.03
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_52ihp"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -52.5
+linear_accel_max = -25.0
+linear_accel_curve = SubResource("CurveTexture_748lf")
+damping_min = 16.248
+damping_max = 60.0
+scale_curve = SubResource("CurveTexture_52ihp")
+color_ramp = SubResource("GradientTexture1D_52ihp")
+hue_variation_min = -0.03
+hue_variation_max = 0.03
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_748lf"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -52.5
+linear_accel_max = -25.0
+linear_accel_curve = SubResource("CurveTexture_748lf")
+damping_min = 16.248
+damping_max = 60.0
+scale_curve = SubResource("CurveTexture_52ihp")
+color_ramp = SubResource("GradientTexture1D_52ihp")
+hue_variation_min = -0.03
+hue_variation_max = 0.03
+
+[node name="GunFlash" type="GPUParticles2D" node_paths=PackedStringArray("particles", "longest_particle")]
+amount = 20
+lifetime = 0.4
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_a75k2")
+script = ExtResource("1_5pxb6")
+particles = [NodePath("."), NodePath("GPUParticles 2"), NodePath("GPUParticles 3")]
+longest_particle = NodePath(".")
+
+[node name="GPUParticles 2" type="GPUParticles2D" parent="."]
+amount = 10
+lifetime = 0.4
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_52ihp")
+
+[node name="GPUParticles 3" type="GPUParticles2D" parent="."]
+amount = 10
+lifetime = 0.4
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_748lf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(10, 10)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://d0jw7un8xrfh"]
+[gd_scene load_steps=7 format=4 uid="uid://d0jw7un8xrfh"]
 
+[ext_resource type="Script" uid="uid://pd1girpcnjjj" path="res://Game scenes/prototyping.gd" id="1_srii3"]
 [ext_resource type="Texture2D" uid="uid://c1t3pshnpfysr" path="res://icon.svg" id="1_vfyey"]
 [ext_resource type="PackedScene" uid="uid://b1vtmnwr2sk4q" path="res://Player/player.tscn" id="1_y2bou"]
 [ext_resource type="PackedScene" uid="uid://cotatg05vt0u2" path="res://Enemies/Shredder/Shredder.tscn" id="3_a0ihh"]
@@ -16,7 +17,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_vfyey")
 
-[node name="Prototyping" type="Node2D"]
+[node name="Prototyping" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_srii3")
+player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("1_y2bou")]
 position = Vector2(356, 587)
@@ -27,4 +30,5 @@ tile_map_data = PackedByteArray("AAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAA
 tile_set = SubResource("TileSet_w2dvv")
 
 [node name="Shredder" parent="." instance=ExtResource("3_a0ihh")]
+visible = false
 position = Vector2(621, 200)
