@@ -73,8 +73,10 @@ hue_variation_min = -0.03
 hue_variation_max = 0.03
 
 [node name="GunFlash" type="GPUParticles2D" node_paths=PackedStringArray("particles", "longest_particle")]
+emitting = false
 amount = 20
 lifetime = 0.4
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_a75k2")
 script = ExtResource("1_5pxb6")
@@ -82,14 +84,18 @@ particles = [NodePath("."), NodePath("GPUParticles 2"), NodePath("GPUParticles 3
 longest_particle = NodePath(".")
 
 [node name="GPUParticles 2" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 10
 lifetime = 0.4
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_52ihp")
 
 [node name="GPUParticles 3" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 10
 lifetime = 0.4
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_748lf")
 
