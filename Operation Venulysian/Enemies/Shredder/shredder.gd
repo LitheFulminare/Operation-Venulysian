@@ -24,8 +24,7 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = velocity.normalized() * speed
 	move()
-	rotation = lerp_angle(rotation, velocity.angle_to_point(Vector2.ZERO), 0.4)
-	
+	rotation = lerp_angle(rotation, velocity.angle(), 0.4)
 
 func move() -> void:
 	global_position += velocity
