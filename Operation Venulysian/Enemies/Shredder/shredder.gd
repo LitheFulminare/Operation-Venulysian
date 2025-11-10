@@ -5,7 +5,7 @@ var boids_in_sight: Array[Shredder]
 var velocity: Vector2 = Vector2.ZERO
 var speed: float = 7.0
 var screen_size: Vector2
-var movv: float = 35
+var movv: float = 45
 
 func _ready() -> void:
 	rays = get_rays()
