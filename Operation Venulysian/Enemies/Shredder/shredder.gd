@@ -3,13 +3,13 @@ class_name Shredder extends Area2D
 var rays: Array[RayCast2D]
 var boids_in_sight: Array[Shredder]
 var velocity: Vector2 = Vector2.ZERO
-var speed: float = 7.0
+var speed: float = 7
 var screen_size: Vector2
 var movv: float = 45
 
 func _ready() -> void:
 	rays = get_rays()
-	screen_size = get_viewport().get_visible_rect().size	
+	screen_size = get_viewport().get_visible_rect().size
 	randomize()
 	
 func get_rays() -> Array[RayCast2D]:
@@ -29,15 +29,15 @@ func _physics_process(delta: float) -> void:
 func move() -> void:
 	global_position += velocity
 	
-	if global_position.x < 0:
-		global_position.x = screen_size.x
-	if global_position.x > screen_size.x:
-		global_position.x = 0
-		
-	if global_position.y < 0:
-		global_position.y = screen_size.y
-	if global_position.y > screen_size.y:
-		global_position.y = 0
+	#if global_position.x < 0:
+		#global_position.x = screen_size.x
+	#if global_position.x > screen_size.x:
+		#global_position.x = 0
+		#
+	#if global_position.y < 0:
+		#global_position.y = screen_size.y
+	#if global_position.y > screen_size.y:
+		#global_position.y = 0
 	
 func boids() -> void:
 	if !boids_in_sight:
