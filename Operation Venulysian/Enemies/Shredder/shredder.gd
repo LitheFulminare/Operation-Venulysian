@@ -65,7 +65,10 @@ func boids() -> void:
 	velocity += (steer_away)
 
 func checkCollision() -> void:
-	return
+	for ray in rays:
+		if ray.is_colliding():
+			var magi: float = 100 / (ray.get_collision_point() - global_position).length_squared()
+			velocity -= (ray.target_position.rotated(rotation) * magi)
 
 
 func _on_vision_area_2d_area_entered(area: Area2D) -> void:

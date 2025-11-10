@@ -11,6 +11,7 @@ size = Vector2(230, 165)
 
 [node name="Shredder" type="Area2D" groups=["boid"]]
 scale = Vector2(0.4, 0.4)
+collision_layer = 8
 script = ExtResource("1_grmx2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,6 +25,8 @@ shape = SubResource("RectangleShape2D_ouxa2")
 debug_color = Color(0, 0.6, 0.701961, 0.32549)
 
 [node name="Vision Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision Area2D"]
 position = Vector2(42.5, 0)
