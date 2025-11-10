@@ -7,7 +7,7 @@
 size = Vector2(39.585, 39.61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grmx2"]
-size = Vector2(174, 100)
+size = Vector2(230, 165)
 
 [node name="Shredder" type="Area2D" groups=["boid"]]
 scale = Vector2(0.4, 0.4)
@@ -26,23 +26,24 @@ debug_color = Color(0, 0.6, 0.701961, 0.32549)
 [node name="Vision Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision Area2D"]
-position = Vector2(36.67, 0)
+position = Vector2(42.5, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_grmx2")
 debug_color = Color(0, 0.635294, 0.419608, 0.137255)
 
 [node name="Raycast folder" type="Node2D" parent="."]
 
 [node name="RayCast 1" type="RayCast2D" parent="Raycast folder"]
-target_position = Vector2(33, -50)
+target_position = Vector2(33, -82)
 
 [node name="RayCast 2" type="RayCast2D" parent="Raycast folder"]
-target_position = Vector2(33, 50)
+target_position = Vector2(33, 82)
 
 [node name="RayCast 3" type="RayCast2D" parent="Raycast folder"]
-target_position = Vector2(123, -8.065)
+target_position = Vector2(148.59, -8.065)
 
 [node name="RayCast 4" type="RayCast2D" parent="Raycast folder"]
-target_position = Vector2(105, 8)
+target_position = Vector2(128.23, 8)
 
 [connection signal="area_entered" from="Vision Area2D" to="." method="_on_vision_area_2d_area_entered"]
 [connection signal="area_exited" from="Vision Area2D" to="." method="_on_vision_area_2d_area_exited"]

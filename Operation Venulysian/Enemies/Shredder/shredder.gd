@@ -5,12 +5,11 @@ var boids_in_sight: Array[Shredder]
 var velocity: Vector2 = Vector2.ZERO
 var speed: float = 7.0
 var screen_size: Vector2
-var movv: float = 50.0
+var movv: float = 35
 
 func _ready() -> void:
 	rays = get_rays()
-	screen_size = get_viewport().get_visible_rect().size
-	print(screen_size)
+	screen_size = get_viewport().get_visible_rect().size	
 	randomize()
 	
 func get_rays() -> Array[RayCast2D]:
@@ -59,11 +58,11 @@ func boids() -> void:
 	avg_velocity /= number_of_boids
 	velocity += (avg_velocity - velocity) / 2
 	
+	avg_position /= number_of_boids
+	velocity += (avg_position - position)
+	
 	steer_away /= number_of_boids
 	velocity += (steer_away)
-	
-	#avg_position /= number_of_boids
-	#velocity += (avg_position - position)
 
 func checkCollision() -> void:
 	return

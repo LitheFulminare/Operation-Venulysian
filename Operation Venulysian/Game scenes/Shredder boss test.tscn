@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=4 uid="uid://7oyk7dsnnigd"]
+
+[ext_resource type="Script" uid="uid://pd1girpcnjjj" path="res://Game scenes/prototyping.gd" id="1_u34g7"]
+[ext_resource type="PackedScene" uid="uid://b1vtmnwr2sk4q" path="res://Player/player.tscn" id="2_2aoru"]
+[ext_resource type="Texture2D" uid="uid://c1t3pshnpfysr" path="res://icon.svg" id="3_v2b1u"]
+[ext_resource type="PackedScene" uid="uid://cotatg05vt0u2" path="res://Enemies/Shredder/Shredder.tscn" id="4_vcsju"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfyey"]
+texture = ExtResource("3_v2b1u")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_w2dvv"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_vfyey")
+
+[node name="Prototyping" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_u34g7")
+player = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("2_2aoru")]
+position = Vector2(1660, 584)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+modulate = Color(0, 0, 0, 1)
+tile_map_data = PackedByteArray("AAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAXAAYAAAAAAAAAAAAXAAcAAAAAAAAAAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAAAAAAZAAYAAAAAAAAAAAAZAAcAAAAAAAAAAAAaAAYAAAAAAAAAAAAaAAcAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAaAAQAAAAAAAAAAAAaAAUAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAAIAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAAKAP3/AAAAAAAAAAALAP3/AAAAAAAAAAAMAP3/AAAAAAAAAAANAP3/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAP3/AAAAAAAAAAARAP3/AAAAAAAAAAASAP3/AAAAAAAAAAATAP3/AAAAAAAAAAAUAP3/AAAAAAAAAAAVAP3/AAAAAAAAAAAWAP3/AAAAAAAAAAAXAP3/AAAAAAAAAAAYAP3/AAAAAAAAAAAZAP3/AAAAAAAAAAAaAP3/AAAAAAAAAAAaAP7/AAAAAAAAAAAaAP//AAAAAAAAAAAaAAAAAAAAAAAAAAAaAAEAAAAAAAAAAAAaAAIAAAAAAAAAAAAZAP7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_w2dvv")
+
+[node name="Shredders" type="Node2D" parent="."]
+
+[node name="Shredder" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1600, 237)
+
+[node name="Shredder2" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1549, 208)
+
+[node name="Shredder3" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1632, 185)
+
+[node name="Shredder4" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1666, 236)
+
+[node name="Shredder5" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1632, 279)
+
+[node name="Shredder6" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1555, 276)
+
+[node name="Shredder7" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1481, 247)
+
+[node name="Shredder8" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1695, 284)
+
+[node name="Shredder9" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1724, 235)
+
+[node name="Shredder10" parent="Shredders" instance=ExtResource("4_vcsju")]
+position = Vector2(1698, 184)
