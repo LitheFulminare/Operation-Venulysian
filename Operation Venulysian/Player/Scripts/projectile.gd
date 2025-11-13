@@ -10,8 +10,6 @@ func shoot(direction: Vector2, speed: float) -> void:
 	self.direction = direction
 	self.speed = speed
 	
-
-
 func _on_timer_timeout() -> void:
 	print("Projectile despawning")
 	queue_free()

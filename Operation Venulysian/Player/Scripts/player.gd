@@ -12,7 +12,10 @@ var is_in_grappling_hook: bool = false
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Melee"):
-		weapon_controller.shoot(global_position, Vector2(1,0))
+		if movement_component.is_looking_right:
+			weapon_controller.shoot(global_position, Vector2(1,0))
+		else:
+			weapon_controller.shoot(global_position, Vector2(-1,0))
 		#attack_controller.melee_attack()
 
 func _physics_process(delta: float) -> void:
