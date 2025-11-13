@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvclpbt50uv5l"]
+
+[ext_resource type="Script" uid="uid://blt4wujjnmpjq" path="res://Player/Scripts/projectile.gd" id="1_7k6uo"]
+[ext_resource type="Texture2D" uid="uid://c1t3pshnpfysr" path="res://icon.svg" id="1_o11rv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o11rv"]
+size = Vector2(128, 20)
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 16
+collision_mask = 13
+script = ExtResource("1_7k6uo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.0859375, 1, 1)
+scale = Vector2(1, 0.175)
+texture = ExtResource("1_o11rv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o11rv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

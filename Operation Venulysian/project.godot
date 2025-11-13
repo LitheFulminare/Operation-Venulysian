@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerVars="*res://Player/player_vars.gd"
+PlayerVars="*res://Player/Scripts/player_vars.gd"
 
 [display]
 
@@ -67,6 +67,7 @@ Melee={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Shredder (boid)"
+2d_physics/layer_5="Player projectile"
 
 [physics]
 

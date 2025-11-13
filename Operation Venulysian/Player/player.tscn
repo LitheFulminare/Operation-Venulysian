@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1vtmnwr2sk4q"]
+[gd_scene load_steps=10 format=3 uid="uid://b1vtmnwr2sk4q"]
 
-[ext_resource type="Script" uid="uid://creutxpg4tk0i" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://creutxpg4tk0i" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://b4yrdgvplq3aq" path="res://Components/Entity/movement_controller.gd" id="1_l8h54"]
-[ext_resource type="Script" uid="uid://bja0wtxt55a36" path="res://Player/grappling_hook_controller.gd" id="3_btcbx"]
-[ext_resource type="Script" uid="uid://carsdkjlmcge2" path="res://Player/attack_controller.gd" id="3_k53q1"]
+[ext_resource type="Script" uid="uid://bja0wtxt55a36" path="res://Player/Scripts/grappling_hook_controller.gd" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://dna7u7nx0tqjy" path="res://Player/Scripts/weapon_controller.gd" id="3_fhl08"]
+[ext_resource type="Script" uid="uid://carsdkjlmcge2" path="res://Player/Scripts/attack_controller.gd" id="3_k53q1"]
 [ext_resource type="Texture2D" uid="uid://wsc0yr7432b8" path="res://Player/Sprites/Chain tilable 2.png" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://bvclpbt50uv5l" path="res://Player/projectile.tscn" id="4_vtle1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k53q1"]
 size = Vector2(146, 167.5)
@@ -12,12 +14,13 @@ size = Vector2(146, 167.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfyey"]
 size = Vector2(100, 100)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "grappling_hook_component", "attack_controller")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "grappling_hook_component", "attack_controller", "weapon_controller")]
 collision_layer = 2
 script = ExtResource("1_4ntmi")
 movement_component = NodePath("Movement Controller")
 grappling_hook_component = NodePath("Grappling Hook Controller")
 attack_controller = NodePath("Attack Controller")
+weapon_controller = NodePath("Weapon Controller")
 
 [node name="Movement Controller" type="Node" parent="." node_paths=PackedStringArray("player", "dash_duration_timer", "dash_cooldown_timer")]
 script = ExtResource("1_l8h54")
@@ -27,6 +30,10 @@ dash_cooldown_timer = NodePath("../Dash Cooldown")
 walk_speed = 350.0
 jump_velocity = 450.0
 jump_release_deceleration = 0.35
+
+[node name="Weapon Controller" type="Node" parent="."]
+script = ExtResource("3_fhl08")
+projectile_scene = ExtResource("4_vtle1")
 
 [node name="Attack Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "attack_window_timer", "sword_hitbox", "sword_hit_window_timer")]
 script = ExtResource("3_k53q1")
