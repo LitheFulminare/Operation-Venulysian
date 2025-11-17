@@ -24,7 +24,7 @@ player = NodePath("Player")
 [node name="Player" parent="." instance=ExtResource("2_2aoru")]
 position = Vector2(1660, 584)
 
-[node name="Camera2D" parent="Player" index="5"]
+[node name="Camera2D" parent="Player" index="6"]
 limit_left = 0
 limit_top = -340
 limit_right = 3390
