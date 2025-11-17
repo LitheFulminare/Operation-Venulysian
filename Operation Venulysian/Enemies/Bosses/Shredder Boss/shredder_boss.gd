@@ -20,7 +20,11 @@ func spawn_shredders() -> void:
 		add_child(shredder)
 		shredder.global_position = shredder_spawn.global_position
 		shredder.rotate(deg_to_rad(270))
-		shredder.boundary_rect = Rect2(shredder_boundary.global_position, shredder_boundary.shape.size)
+		
+		var shape := shredder_boundary.shape as RectangleShape2D
+		var half := shape.size * 0.5
+		var top_left := shredder_boundary.global_position - half
+		shredder.boundary_rect = Rect2(top_left, shape.size)
 		
 		if i % 2 == 0:
 			shredder.global_position.x += 10

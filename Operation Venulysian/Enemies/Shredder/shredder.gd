@@ -6,6 +6,7 @@ var velocity: Vector2 = Vector2.ZERO
 var speed: float = 7
 var screen_size: Vector2
 var movv: float = 45
+@export var boundary_force: float = 1
 
 var initial_direction: Vector2 = Vector2(0, -1)
 
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	boids()
 	checkCollision()
-	keep_inside_bounds()
+	#keep_inside_bounds()
 	
 	velocity = velocity.normalized() * speed
 	move()
@@ -85,6 +86,21 @@ func checkCollision() -> void:
 func keep_inside_bounds() -> void:
 	if boundary_rect == null:
 		return
+	
+	var margin = 10.0  # how close to the border before steering
+	var steer = Vector2.ZERO
+
+	if global_position.x < boundary_rect.position.x + margin:
+		steer.x += boundary_force
+	elif global_position.x > boundary_rect.position.x + boundary_rect.size.x - margin:
+		steer.x -= boundary_force
+
+	if global_position.y < boundary_rect.position.y + margin:
+		steer.y += boundary_force
+	elif global_position.y > boundary_rect.position.y + boundary_rect.size.y - margin:
+		steer.y -= boundary_force
+
+	velocity += steer
 
 func _on_vision_area_2d_area_entered(area: Area2D) -> void:
 	if area != self && area is Shredder:

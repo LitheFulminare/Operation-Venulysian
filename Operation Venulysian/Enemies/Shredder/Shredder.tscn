@@ -12,6 +12,7 @@ size = Vector2(230, 165)
 [node name="Shredder" type="Area2D" groups=["boid"]]
 scale = Vector2(0.4, 0.4)
 collision_layer = 8
+collision_mask = 33
 script = ExtResource("1_grmx2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -37,15 +38,23 @@ debug_color = Color(0, 0.635294, 0.419608, 0.137255)
 
 [node name="RayCast 1" type="RayCast2D" parent="Raycast folder"]
 target_position = Vector2(33, -82)
+collision_mask = 33
+collide_with_areas = true
 
 [node name="RayCast 2" type="RayCast2D" parent="Raycast folder"]
 target_position = Vector2(33, 82)
+collision_mask = 33
+collide_with_areas = true
 
 [node name="RayCast 3" type="RayCast2D" parent="Raycast folder"]
 target_position = Vector2(148.59, -8.065)
+collision_mask = 33
+collide_with_areas = true
 
 [node name="RayCast 4" type="RayCast2D" parent="Raycast folder"]
 target_position = Vector2(128.23, 8)
+collision_mask = 33
+collide_with_areas = true
 
 [connection signal="area_entered" from="Vision Area2D" to="." method="_on_vision_area_2d_area_entered"]
 [connection signal="area_exited" from="Vision Area2D" to="." method="_on_vision_area_2d_area_exited"]
