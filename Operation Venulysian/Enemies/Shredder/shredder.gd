@@ -7,10 +7,18 @@ var speed: float = 7
 var screen_size: Vector2
 var movv: float = 45
 
+var initial_direction: Vector2 = Vector2(0, -1)
+
+var active: bool = false
+
+var boundary_rect: Rect2
+
 func _ready() -> void:
 	rays = get_rays()
 	screen_size = get_viewport().get_visible_rect().size
 	randomize()
+	
+	velocity = initial_direction * speed
 	
 func get_rays() -> Array[RayCast2D]:
 	var rayArray: Array[RayCast2D]
@@ -19,8 +27,12 @@ func get_rays() -> Array[RayCast2D]:
 	return rayArray
 
 func _physics_process(delta: float) -> void:
+	#if !active:
+		#return
+	
 	boids()
 	checkCollision()
+	keep_inside_bounds()
 	
 	velocity = velocity.normalized() * speed
 	move()
@@ -63,12 +75,16 @@ func boids() -> void:
 	steer_away /= number_of_boids
 	velocity += (steer_away)
 
+
 func checkCollision() -> void:
 	for ray in rays:
 		if ray.is_colliding():
 			var magi: float = 100 / (ray.get_collision_point() - global_position).length_squared()
 			velocity -= (ray.target_position.rotated(rotation) * magi)
 
+func keep_inside_bounds() -> void:
+	if boundary_rect == null:
+		return
 
 func _on_vision_area_2d_area_entered(area: Area2D) -> void:
 	if area != self && area is Shredder:

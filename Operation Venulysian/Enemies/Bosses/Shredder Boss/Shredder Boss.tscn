@@ -1,18 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0ofnjratfvgp"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ofnjratfvgp"]
 
 [ext_resource type="Texture2D" uid="uid://cr3yofclobcpk" path="res://Enemies/Shredder/ShredderSprite.png" id="1_s47nl"]
 [ext_resource type="Script" uid="uid://5br54t2nlxmw" path="res://Enemies/Bosses/Shredder Boss/shredder_boss.gd" id="1_tvo80"]
 [ext_resource type="PackedScene" uid="uid://cotatg05vt0u2" path="res://Enemies/Shredder/Shredder.tscn" id="3_rmffu"]
+[ext_resource type="PackedScene" uid="uid://csbe37fa7co5e" path="res://Enemies/Shredder/Shredder Spawn.tscn" id="4_tefhh"]
 
-[node name="ShredderBoss" type="Node2D" node_paths=PackedStringArray("shredder_spawn")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefhh"]
+size = Vector2(201, 81.5714)
+
+[node name="ShredderBoss" type="Node2D" node_paths=PackedStringArray("shredder_spawn", "shredder_spawner", "shredder_boundary")]
 texture_filter = 1
 scale = Vector2(7, 7)
 script = ExtResource("1_tvo80")
-shredder_spawn = NodePath("Shredder Spawn")
+shredder_spawn = NodePath("Shredder Nodes/Shredder Spawn")
 shredder_scene = ExtResource("3_rmffu")
+shredder_spawner = NodePath("Shredder Nodes/ShredderSpawn")
+shredder_boundary = NodePath("Shredder Nodes/Boundaries")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_s47nl")
 
-[node name="Shredder Spawn" type="Marker2D" parent="."]
+[node name="Shredder Nodes" type="Node2D" parent="."]
+
+[node name="Shredder Spawn" type="Marker2D" parent="Shredder Nodes"]
 position = Vector2(0, -30)
+scale = Vector2(1, 1)
+
+[node name="ShredderSpawn" parent="Shredder Nodes" instance=ExtResource("4_tefhh")]
+position = Vector2(1.57143, -0.142856)
+scale = Vector2(1, 1)
+
+[node name="Boundaries" type="CollisionShape2D" parent="Shredder Nodes"]
+position = Vector2(0, -60)
+shape = SubResource("RectangleShape2D_tefhh")
+debug_color = Color(0, 0.6, 0.701961, 0.2)

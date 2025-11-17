@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://csbe37fa7co5e"]
+
+[ext_resource type="Script" uid="uid://bid67n4nh0cuj" path="res://Enemies/Shredder/shredder_spawn.gd" id="1_3jlpr"]
+[ext_resource type="PackedScene" uid="uid://cotatg05vt0u2" path="res://Enemies/Shredder/Shredder.tscn" id="1_njowk"]
+
+[node name="ShredderSpawn" type="Node2D"]
+visible = false
+script = ExtResource("1_3jlpr")
+
+[node name="Shredder" parent="." instance=ExtResource("1_njowk")]
+position = Vector2(-1, 9.53674e-07)
+rotation = -1.5708
+
+[node name="Shredder2" parent="." instance=ExtResource("1_njowk")]
+position = Vector2(-1, 63)
+rotation = -1.5708
+
+[node name="Shredder3" parent="." instance=ExtResource("1_njowk")]
+position = Vector2(1, 41)
+rotation = -1.5708
+
+[node name="Shredder4" parent="." instance=ExtResource("1_njowk")]
+position = Vector2(-3, 20)
+rotation = -1.5708
