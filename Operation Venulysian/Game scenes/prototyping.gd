@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var player: Player
-var gun_flash_scene = preload("res://Tech Art/Particles/Gun Flash/GunFlash.tscn")
+var gun_flash_scene: PackedScene = preload("res://Tech Art/Particles/Gun Flash/GunFlash.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
