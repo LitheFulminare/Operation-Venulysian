@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0ofnjratfvgp"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ofnjratfvgp"]
 
 [ext_resource type="Texture2D" uid="uid://cr3yofclobcpk" path="res://Enemies/Shredder/ShredderSprite.png" id="1_s47nl"]
 [ext_resource type="Script" uid="uid://5br54t2nlxmw" path="res://Enemies/Bosses/Shredder Boss/shredder_boss.gd" id="1_tvo80"]
@@ -10,16 +10,12 @@ size = Vector2(11.5714, 85.1429)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqday"]
 size = Vector2(11.571, 200)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefhh"]
-size = Vector2(201, 81.5714)
-
-[node name="ShredderBoss" type="Node2D" node_paths=PackedStringArray("shredder_spawn", "shredder_boundary")]
+[node name="ShredderBoss" type="Node2D" node_paths=PackedStringArray("shredder_spawn")]
 texture_filter = 1
 scale = Vector2(7, 7)
 script = ExtResource("1_tvo80")
 shredder_spawn = NodePath("Shredder Nodes/Shredder Spawn")
 shredder_scene = ExtResource("3_rmffu")
-shredder_boundary = NodePath("Shredder Nodes/Boundaries")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_s47nl")
@@ -51,9 +47,3 @@ shape = SubResource("RectangleShape2D_sqday")
 position = Vector2(0, -55.135)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_sqday")
-
-[node name="Boundaries" type="CollisionShape2D" parent="Shredder Nodes"]
-visible = false
-position = Vector2(0, -60)
-shape = SubResource("RectangleShape2D_tefhh")
-debug_color = Color(0, 0.6, 0.701961, 0.2)

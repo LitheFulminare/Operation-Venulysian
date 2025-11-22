@@ -1,18 +1,15 @@
 class_name Shredder extends Area2D
 
-var rays: Array[RayCast2D]
-var boids_in_sight: Array[Shredder]
-var velocity: Vector2 = Vector2.ZERO
-var speed: float = 7
-var screen_size: Vector2
-var movv: float = 45
+@export var speed: float = 7
+@export var movv: float = 45
 @export var boundary_force: float = 1
 
-var initial_direction: Vector2 = Vector2(0, -1)
-
-var active: bool = false
-
-var boundary_rect: Rect2
+var rays: Array[RayCast2D]
+var boids_in_sight: Array[Shredder]
+var velocity := Vector2.ZERO
+var screen_size: Vector2
+var initial_direction := Vector2(0, -1)
+var active := false
 
 func _ready() -> void:
 	rays = get_rays()
@@ -33,7 +30,6 @@ func _physics_process(delta: float) -> void:
 	
 	boids()
 	checkCollision()
-	#keep_inside_bounds()
 	
 	velocity = velocity.normalized() * speed
 	move()
@@ -82,25 +78,6 @@ func checkCollision() -> void:
 		if ray.is_colliding():
 			var magi: float = 100 / (ray.get_collision_point() - global_position).length_squared()
 			velocity -= (ray.target_position.rotated(rotation) * magi)
-
-func keep_inside_bounds() -> void:
-	if boundary_rect == null:
-		return
-	
-	var margin = 10.0  # how close to the border before steering
-	var steer = Vector2.ZERO
-
-	if global_position.x < boundary_rect.position.x + margin:
-		steer.x += boundary_force
-	elif global_position.x > boundary_rect.position.x + boundary_rect.size.x - margin:
-		steer.x -= boundary_force
-
-	if global_position.y < boundary_rect.position.y + margin:
-		steer.y += boundary_force
-	elif global_position.y > boundary_rect.position.y + boundary_rect.size.y - margin:
-		steer.y -= boundary_force
-
-	velocity += steer
 
 func _on_vision_area_2d_area_entered(area: Area2D) -> void:
 	if area != self && area is Shredder:
