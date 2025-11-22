@@ -3,7 +3,6 @@ class_name ShredderBoss extends Node2D
 @export_group("Components")
 @export var shredder_spawn: Marker2D
 @export var shredder_scene: PackedScene
-@export var shredder_spawner: ShredderSpawner
 @export var shredder_boundary: CollisionShape2D
 
 @export_group("Parameters")
