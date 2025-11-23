@@ -42,7 +42,6 @@ shape = SubResource("RectangleShape2D_iy2i1")
 [node name="Upper Margin" type="CollisionShape2D" parent="Shredder Nodes/Boundary Area"]
 position = Vector2(-1.71427, 31.619)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sqday")
 
 [node name="Lower Margin" type="CollisionShape2D" parent="Shredder Nodes/Boundary Area"]

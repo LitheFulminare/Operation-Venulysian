@@ -1,8 +1,7 @@
 class_name Shredder extends Area2D
 
 @export var speed: float = 7
-@export var movv: float = 15 # algo entre 15 e 45 é um bom valor
-@export var boundary_force: float = 1
+@export var separation: float = 15 # algo entre 15 e 45 é um bom valor
 
 var rays: Array[RayCast2D]
 var boids_in_sight: Array[Shredder]
@@ -59,9 +58,10 @@ func boids() -> void:
 	var steer_away := Vector2.ZERO
 	
 	for boid in boids_in_sight:
-		avg_velocity += boid.velocity
-		avg_position += boid.position
-		steer_away -= (boid.global_position - global_position) * (movv/(global_position - boid.global_position).length())
+		avg_velocity += boid.velocity # aligment
+		avg_position += boid.position # cohesion
+		#                   points towards the neighbor                increases separation force the closer they are
+		steer_away -= (boid.global_position - global_position) * (separation/(global_position - boid.global_position).length()) # separation
 		
 	avg_velocity /= number_of_boids
 	velocity += (avg_velocity - velocity) / 2

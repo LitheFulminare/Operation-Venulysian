@@ -27,88 +27,175 @@ tile_set = SubResource("TileSet_w2dvv")
 anchor_mode = 0
 
 [node name="Shredder" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(704, 238)
+position = Vector2(505, 152)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder2" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(934, 91)
+position = Vector2(897, 108)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder3" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(660, 253)
+position = Vector2(690, 224)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder4" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(689, 242)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder5" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(784, 488)
+position = Vector2(747, 490)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder6" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(693, 205)
+position = Vector2(693, 203)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder7" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(273, 162)
+position = Vector2(213, 156)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder8" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(259, 388)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder9" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(358, 368)
+position = Vector2(280, 365)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder10" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(251, 364)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder11" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(248, 135)
+position = Vector2(205, 140)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder12" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(306, 368)
+position = Vector2(269, 377)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder13" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(386, 336)
+position = Vector2(285, 363)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder14" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(175, 166)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder15" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(494, 165)
+position = Vector2(471, 149)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder16" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(864, 142)
+position = Vector2(885, 120)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder17" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(480, 192)
+position = Vector2(452, 161)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder18" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(529, 171)
+position = Vector2(476, 162)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder19" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(454, 463)
+position = Vector2(513, 453)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder20" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(525, 439)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder21" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(499, 470)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder22" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(746, 503)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder23" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(713, 507)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder24" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(739, 468)
+position = Vector2(736, 491)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder25" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(882, 112)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder26" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(922, 136)
+position = Vector2(901, 120)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder27" parent="." instance=ExtResource("3_3n16j")]
 position = Vector2(450, 145)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder28" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(217, 145)
+position = Vector2(194, 157)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
 
 [node name="Shredder29" parent="." instance=ExtResource("3_3n16j")]
-position = Vector2(191, 129)
+position = Vector2(182, 145)
+scale = Vector2(0.5, 0.5)
+speed = 5.0
+movv = 50.0
