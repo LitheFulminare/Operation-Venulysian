@@ -23,10 +23,10 @@ texture = ExtResource("1_s47nl")
 [node name="Shredder Nodes" type="Node2D" parent="."]
 
 [node name="Shredder Spawn" type="Marker2D" parent="Shredder Nodes"]
-position = Vector2(0, -30)
+position = Vector2(0, -26.28)
 
 [node name="Boundary Area" type="Area2D" parent="Shredder Nodes"]
-position = Vector2(0, -60)
+position = Vector2(0, -42.205)
 collision_layer = 32
 collision_mask = 0
 

@@ -6,9 +6,9 @@ var speed: float
 func _process(delta: float) -> void:
 	global_position += (direction * speed) * delta
 
-func shoot(direction: Vector2, speed: float) -> void:
-	self.direction = direction
-	self.speed = speed
+func shoot(dir: Vector2, velocity: float) -> void:
+	direction = dir
+	speed = velocity
 	
 func _on_timer_timeout() -> void:
 	queue_free()

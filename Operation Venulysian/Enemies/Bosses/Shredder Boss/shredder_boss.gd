@@ -19,7 +19,7 @@ func spawn_shredders() -> void:
 		shredder.global_position = shredder_spawn.global_position
 		shredder.rotate(deg_to_rad(270))
 		
-		if i % 2 == 0:
-			shredder.global_position.x += 10
+		#if i % 2 == 0:
+			#shredder.global_position.x += 10
 			
 		await get_tree().create_timer(shredder_spawn_delay).timeout

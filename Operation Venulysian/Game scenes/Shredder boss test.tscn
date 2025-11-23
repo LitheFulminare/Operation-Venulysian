@@ -38,5 +38,7 @@ tile_set = SubResource("TileSet_w2dvv")
 
 [node name="ShredderBoss" parent="." instance=ExtResource("5_2aoru")]
 position = Vector2(2168, 648)
+shredder_count = 15
+shredder_spawn_delay = 0.1
 
 [editable path="Player"]
