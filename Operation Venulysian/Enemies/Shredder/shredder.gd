@@ -1,7 +1,7 @@
 class_name Shredder extends Area2D
 
 @export var speed: float = 7
-@export var movv: float = 15 # algo entre 15 e 45 são valorens bons
+@export var movv: float = 15 # algo entre 15 e 45 é um bom valor
 @export var boundary_force: float = 1
 
 var rays: Array[RayCast2D]
