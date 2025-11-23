@@ -8,7 +8,7 @@
 size = Vector2(11.5714, 85.1429)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqday"]
-size = Vector2(11.571, 200)
+size = Vector2(11.571, 103.714)
 
 [node name="ShredderBoss" type="Node2D" node_paths=PackedStringArray("shredder_spawn")]
 texture_filter = 1
@@ -29,18 +29,20 @@ position = Vector2(0, -26.28)
 position = Vector2(0, -42.205)
 collision_layer = 32
 collision_mask = 0
+monitoring = false
 
 [node name="Left Margin" type="CollisionShape2D" parent="Shredder Nodes/Boundary Area"]
-position = Vector2(-100, -11)
+position = Vector2(-44.8571, -12.0807)
 shape = SubResource("RectangleShape2D_iy2i1")
 
 [node name="Right Margin" type="CollisionShape2D" parent="Shredder Nodes/Boundary Area"]
-position = Vector2(100, -11)
+position = Vector2(43.4286, -12.6521)
 shape = SubResource("RectangleShape2D_iy2i1")
 
 [node name="Upper Margin" type="CollisionShape2D" parent="Shredder Nodes/Boundary Area"]
-position = Vector2(0, 31.619)
+position = Vector2(-1.71427, 31.619)
 rotation = 1.5708
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sqday")
 
 [node name="Lower Margin" type="CollisionShape2D" parent="Shredder Nodes/Boundary Area"]

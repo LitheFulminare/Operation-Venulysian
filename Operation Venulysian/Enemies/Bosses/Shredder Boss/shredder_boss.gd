@@ -3,10 +3,13 @@ class_name ShredderBoss extends Node2D
 @export_group("Components")
 @export var shredder_spawn: Marker2D
 @export var shredder_scene: PackedScene
+@export var area: Area2D
 
 @export_group("Parameters")
 @export var shredder_count: int = 4
 @export var shredder_spawn_delay: float = 0.5
+
+var player: Player
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):

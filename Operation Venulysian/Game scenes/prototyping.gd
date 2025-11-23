@@ -1,7 +1,11 @@
 extends Node2D
 
 @export var player: Player
+@export var boss: ShredderBoss
 var gun_flash_scene: PackedScene = preload("res://Tech Art/Particles/Gun Flash/GunFlash.tscn")
+
+func _ready() -> void:
+	boss.player = player
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

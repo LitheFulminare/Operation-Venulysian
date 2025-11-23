@@ -17,9 +17,10 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_vfyey")
 
-[node name="Prototyping" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Prototyping" type="Node2D" node_paths=PackedStringArray("player", "boss")]
 script = ExtResource("1_u34g7")
 player = NodePath("Player")
+boss = NodePath("ShredderBoss")
 
 [node name="Player" parent="." instance=ExtResource("2_2aoru")]
 position = Vector2(1660, 584)
