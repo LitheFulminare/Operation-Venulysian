@@ -23,12 +23,10 @@ scale = Vector2(1.24, 1.24)
 texture = ExtResource("1_ouxa2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_ouxa2")
 debug_color = Color(0, 0.6, 0.701961, 0.32549)
 
 [node name="Vision Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 8
 

@@ -6,14 +6,14 @@ class_name Shredder extends Area2D
 var rays: Array[RayCast2D]
 var boids_in_sight: Array[Shredder]
 var velocity := Vector2.ZERO
-var screen_size: Vector2
+#var screen_size: Vector2
 var initial_direction := Vector2(0, -1)
 var active := false
 
 func _ready() -> void:
 	rays = get_rays()
-	screen_size = get_viewport().get_visible_rect().size
-	randomize()
+	#screen_size = get_viewport().get_visible_rect().size
+	#randomize()
 	
 	velocity = initial_direction * speed
 	
@@ -53,15 +53,15 @@ func boids() -> void:
 
 	var number_of_boids := boids_in_sight.size()
 	
-	var avg_velocity := Vector2.ZERO
-	var avg_position  := Vector2.ZERO
-	var steer_away := Vector2.ZERO
+	var avg_velocity := Vector2.ZERO # aligment
+	var avg_position  := Vector2.ZERO # cohesion
+	var steer_away := Vector2.ZERO # separation
 	
 	for boid in boids_in_sight:
-		avg_velocity += boid.velocity # aligment
-		avg_position += boid.position # cohesion
+		avg_velocity += boid.velocity 
+		avg_position += boid.position 
 		#                   points towards the neighbor                increases separation force the closer they are
-		steer_away -= (boid.global_position - global_position) * (separation/(global_position - boid.global_position).length()) # separation
+		steer_away -= (boid.global_position - global_position) * (separation/(global_position - boid.global_position).length())
 		
 	avg_velocity /= number_of_boids
 	velocity += (avg_velocity - velocity) / 2
@@ -82,7 +82,6 @@ func checkCollision() -> void:
 func _on_vision_area_2d_area_entered(area: Area2D) -> void:
 	if area != self && area is Shredder:
 		boids_in_sight.append(area)
-
 
 func _on_vision_area_2d_area_exited(area: Area2D) -> void:
 	if area != self && area is Shredder:
