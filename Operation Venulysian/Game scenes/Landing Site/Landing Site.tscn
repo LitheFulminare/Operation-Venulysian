@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://bqyyaluluokyf"]
+[gd_scene load_steps=7 format=4 uid="uid://bqyyaluluokyf"]
 
 [ext_resource type="PackedScene" uid="uid://b1vtmnwr2sk4q" path="res://Player/player.tscn" id="1_f0vtq"]
 [ext_resource type="Texture2D" uid="uid://c1t3pshnpfysr" path="res://icon.svg" id="2_v26x4"]
 [ext_resource type="PackedScene" uid="uid://3elr0wn6rviu" path="res://Map Elements/Triggers/Scene Changer/Scene Changer.tscn" id="3_v26x4"]
+[ext_resource type="PackedScene" uid="uid://d0jw7un8xrfh" path="res://Game scenes/Prototyping.tscn" id="4_1rfri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rfri"]
 texture = ExtResource("2_v26x4")
@@ -29,5 +30,6 @@ tile_set = SubResource("TileSet_pg1sw")
 [node name="SceneChanger" parent="." instance=ExtResource("3_v26x4")]
 position = Vector2(1237, 623)
 collision_layer = 1
+target_scene = ExtResource("4_1rfri")
 
 [connection signal="body_entered" from="SceneChanger" to="SceneChanger" method="_on_body_entered"]
