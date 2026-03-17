@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c1t3pshnpfysr" path="res://icon.svg" id="1_vfyey"]
 [ext_resource type="PackedScene" uid="uid://b1vtmnwr2sk4q" path="res://Player/player.tscn" id="1_y2bou"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfyey"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2bou"]
 texture = ExtResource("1_vfyey")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -13,7 +13,7 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_vfyey")
+sources/0 = SubResource("TileSetAtlasSource_y2bou")
 
 [node name="Prototyping" type="Node2D"]
 
