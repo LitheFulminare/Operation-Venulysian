@@ -24,7 +24,10 @@ func _ready() -> void:
 	cooldown_timer.wait_time = coolddown_duration
 	line2d.visible = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if !PlayerVars.grappling_hook_unlocked:
+		return
+	
 	if Input.is_action_just_pressed("Grappling Hook"):
 		if player.is_in_grappling_hook:
 			stop_using_grappling_hook()
